@@ -6,7 +6,7 @@
     <property name="src" location="src" />
     <property name="build" location="build" />
     <property name="dist" location="dist" />
-    <property name="lib" location="lib" />
+    <property name="lib" location="ivy" />
 
     <path id="build.lib">
         <fileset dir="${lib}" >
@@ -25,7 +25,7 @@
 
     <target name="resolve" depends="init" description="--> retrieve dependencies with Ivy">
         <delete dir="${lib}" />
-        <ivy:retrieve />
+        <ivy:retrieve pattern="${lib}/[organisation].[artifact].[ext]" type="jar" />
         <dependencytree />
     </target>
 
